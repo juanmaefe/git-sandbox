@@ -10,3 +10,6 @@ def test_down():
 def test_negative_rejected():
     with pytest.raises(ValueError):
         classify(-1, 600)
+        
+def test_busy_when_inflight_work_is_young():
+    assert classify(900, 600, oldest_open_age=120) == "busy"
