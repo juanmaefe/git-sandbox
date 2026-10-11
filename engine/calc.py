@@ -3,7 +3,7 @@ def classify(lag_seconds: float, max_duration: float,
     """Toy version of the watchdog verdict."""
     if lag_seconds < 0:
         raise ValueError("lag cannot be negative")
-    if lag_seconds < max_duration:
+    if max_duration > 0 and lag_seconds < max_duration:
         return "healthy"
     if oldest_open_age is not None and oldest_open_age < max_duration:
         return "busy"
